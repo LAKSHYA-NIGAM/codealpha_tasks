@@ -1,59 +1,115 @@
 # 💻 CodeAlpha Internship Projects
 
-This repository contains the web development projects I completed as part of the **CodeAlpha Frontend Development Internship**. Each project highlights a different aspect of my skills in **HTML**, **CSS**, and **JavaScript**.
+![CI](https://github.com/LAKSHYA-NIGAM/codealpha_tasks/actions/workflows/ci.yml/badge.svg)
+![Node](https://img.shields.io/badge/Node.js-20%2B-green.svg)
+![React](https://img.shields.io/badge/React-18-blue.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+This repository contains the web development projects completed as part of the **CodeAlpha Frontend Development Internship**. Each project highlights real-world frontend engineering skills in **HTML5**, **CSS3 / Tailwind**, **JavaScript (ES6+)**, and **React + TypeScript**.
 
 ---
 
 ## 📚 Projects Overview
 
-### 1️⃣ Portfolio Website
+### 1️⃣ Portfolio Website (`CodeAlpha_Portfolio`)
 
-> A fully responsive and modern personal portfolio to showcase my skills, projects, and contact details.
+> A fully responsive and accessible personal portfolio website featuring smooth scroll navigation, contact form input validation, and modern UI styling.
 
-**Features:**
-- Home, About, Skills, Projects, Contact sections
-- Smooth scroll navigation
-- Downloadable resume
-- Mobile responsive design
+**Key Features:**
+- **Navigation**: Sticky navbar with smooth section scrolling and active scrollspy indicators.
+- **Form Validation**: Dedicated client-side validation engine (`contact-validator.js`) ensuring name, email regex, and message length standards.
+- **Responsive**: Tailwind-styled layout optimized for mobile, tablet, and desktop screens.
+- **Unit Tested**: Node test runner suite verifying contact form validation edge cases.
 
-**Technologies:**  
-`HTML`, `CSS`, `JavaScript`
-
----
-
-### 2️⃣ Calculator
-
-> A functional calculator with a user-friendly interface and support for basic arithmetic operations.
-
-**Features:**
-- Real-time expression evaluation
-- Addition, subtraction, multiplication, division
-- Clear and backspace functionality
-- Responsive layout
-
-**Technologies:**  
-`HTML`, `CSS`, `JavaScript`
+**Tech Stack:** `HTML5`, `CSS3 / Tailwind`, `JavaScript (ES6+)`
 
 ---
 
-### 3️⃣ Music Player
+### 2️⃣ Calculator (`CodeAlpha_calculatorProject`)
 
-> A custom-designed music player web app with playlist, audio controls, and autoplay functionality.
+> An arithmetic calculator with safe expression evaluation, dark/light theme switching, and defensive error handling.
 
-**Features:**
-- Play, pause, next, previous controls
-- Display of song title, artist, and duration
-- Seekable progress bar
-- Volume control slider
-- Playlist UI with autoplay
+**Key Features:**
+- **Safe Parsing Engine**: Custom `calculator-engine.js` tokenizes and validates input expressions, preventing arbitrary code execution.
+- **Edge Case Protection**: Defensive handling for division by zero (`Error: Div by 0`), malformed parentheses, and floating-point precision rounding.
+- **Theme Toggle**: One-click dark/light theme switcher with persistent contrast adjustments.
+- **Unit Tested**: 10 comprehensive tests covering operator precedence, decimals, parentheses, and injection protection.
 
-**Technologies:**  
-`HTML`, `CSS`, `JavaScript` (Audio API)
+**Tech Stack:** `HTML5`, `CSS3`, `JavaScript`
 
 ---
 
-## 🚀 How to Use
+### 3️⃣ Music Player (`CodeAlphaMusicPlayer`)
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/LAKSHYA-NIGAM/codealpha-projects.git
+> A modern audio player web application with playlist management, audio seek progress bar, and volume controls.
+
+**Key Features:**
+- **Audio Controls**: Play, pause, skip, previous, seekable progress bar, and volume clamping.
+- **Modular Utilities**: Audio duration formatters (`formatTime`, `calculateProgress`, `clampVolume`) with zero-dependency unit tests.
+- **Playlist Management**: Dynamic playlist drawer with active track indicator and album artwork rendering.
+
+**Tech Stack:** `React 18`, `TypeScript`, `Vite`, `Tailwind CSS`, `Lucide Icons`
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/LAKSHYA-NIGAM/codealpha_tasks.git
+cd codealpha_tasks
+```
+
+### 2. Run Test Suites
+All three sub-projects include automated unit test suites orchestrated by the root test runner:
+```bash
+# Run all unit test suites across all projects
+npm test
+
+# Run individual project test suites
+npm run test:calc        # Calculator evaluation tests (10 tests)
+npm run test:portfolio   # Contact form validator tests (4 tests)
+npm run test:player      # Music player formatter tests (6 tests)
+```
+
+---
+
+## 📂 Repository Structure
+
+```
+codealpha_tasks/
+├── .github/workflows/
+│   └── ci.yml                          # Continuous integration workflow
+├── CodeAlpha_calculatorProject/
+│   ├── calculator-engine.js            # Safe arithmetic parser
+│   ├── index.html                      # Calculator UI
+│   ├── script.js                       # UI controller
+│   ├── style.css                       # Responsive styling
+│   └── tests/
+│       └── calculator.test.mjs         # Calculator unit tests (10 tests)
+├── CodeAlpha_Portfolio/
+│   ├── contact-validator.js            # Contact form validation logic
+│   ├── index.html                      # Portfolio landing page
+│   ├── script.js                       # UI controller
+│   ├── style.css                       # Stylesheet
+│   └── tests/
+│       └── contact-validator.test.mjs  # Form validator unit tests (4 tests)
+├── CodeAlphaMusicPlayer/
+│   └── project/
+│       ├── src/
+│       │   ├── components/             # React UI components
+│       │   ├── utils/
+│       │   │   ├── formatters.ts       # Audio duration & progress formatters
+│       │   │   └── formatters.test.ts  # Audio utility tests (6 tests)
+│       │   └── App.tsx                 # Main application
+│       └── package.json
+├── package.json                        # Root workspace test runner
+└── .gitignore                          # Node, build, and OS ignores
+```
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
