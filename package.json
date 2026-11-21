@@ -1,0 +1,13 @@
+{
+  "name": "codealpha-tasks",
+  "version": "1.0.0",
+  "description": "CodeAlpha Frontend Development Internship Projects",
+  "scripts": {
+    "test:calc": "node --test CodeAlpha_calculatorProject/tests/calculator.test.mjs",
+    "test:portfolio": "node --test CodeAlpha_Portfolio/tests/contact-validator.test.mjs",
+    "test:player": "node --experimental-strip-types --test CodeAlphaMusicPlayer/project/src/utils/formatters.test.ts",
+    "test": "npm run test:calc && npm run test:portfolio && npm run test:player"
+  },
+  "author": "Lakshya Nigam <lakshyanigam20@gmail.com>",
+  "license": "MIT"
+}
