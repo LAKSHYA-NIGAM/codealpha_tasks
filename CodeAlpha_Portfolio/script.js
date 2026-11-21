@@ -16,10 +16,11 @@
 
   window.addEventListener("scroll", () => {
     let current = "";
+    const scrollPosition = window.scrollY || window.pageYOffset || 0;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 100;
-      if (pageYOffset >= sectionTop) {
+      if (scrollPosition >= sectionTop) {
         current = section.getAttribute("id");
       }
     });
@@ -33,7 +34,7 @@
     });
   });
 
-  // Resume download tracking (Optional analytics logging)
+  // Resume download tracking
   document.querySelector(".btn-primary")?.addEventListener("click", () => {
     console.log("Resume download initiated");
   });
@@ -43,12 +44,22 @@
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   });
 
-  // Contact form submission (demo only)
+  // Contact form submission with input validation
   document.querySelector("form")?.addEventListener("submit", function (e) {
     e.preventDefault();
-    alert("Thanks for your message! I'll get back to you soon.");
+    const inputs = this.querySelectorAll("input, textarea");
+    const name = inputs[0]?.value || "";
+    const email = inputs[1]?.value || "";
+    const message = inputs[2]?.value || "";
+
+    if (typeof validateContactForm === 'function') {
+      const { isValid, errors } = validateContactForm({ name, email, message });
+      if (!isValid) {
+        const errorMsg = Object.values(errors).join("\n");
+        alert("Please fix the following issues:\n" + errorMsg);
+        return;
+      }
+    }
+    alert("Thanks for your message, " + (name.trim() || "friend") + "! I'll get back to you soon.");
     this.reset();
   });
-
- 
-
