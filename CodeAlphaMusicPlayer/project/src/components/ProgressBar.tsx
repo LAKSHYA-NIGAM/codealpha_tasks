@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatTime, calculateProgress } from '../utils/formatters.ts';
 
 interface ProgressBarProps {
   currentTime: number;
@@ -7,19 +8,13 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ currentTime, duration, onSeek }) => {
-  const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
-
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const percentage = (e.clientX - rect.left) / rect.width;
     onSeek(percentage * duration);
   };
 
-  const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
+  const progressPercentage = calculateProgress(currentTime, duration);
 
   return (
     <div className="flex items-center space-x-3 text-sm text-gray-300">
