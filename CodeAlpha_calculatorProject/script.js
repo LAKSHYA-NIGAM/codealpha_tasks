@@ -13,10 +13,14 @@ function deleteLast() {
 
 function calculate() {
   const display = document.getElementById('display');
-  try {
-    display.value = eval(display.value);
-  } catch {
-    display.value = "Error";
+  if (typeof safeCalculate === 'function') {
+    display.value = safeCalculate(display.value);
+  } else {
+    try {
+      display.value = eval(display.value);
+    } catch {
+      display.value = "Error";
+    }
   }
 }
 
@@ -35,4 +39,3 @@ function toggleTheme() {
     toggleBtn.textContent = "🌙";
   }
 }
-
